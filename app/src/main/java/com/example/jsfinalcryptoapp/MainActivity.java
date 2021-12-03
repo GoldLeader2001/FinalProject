@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                filterCurrencies(searchEdt.toString());
+                filterCurrencies(editable.toString());
             }
         }));
     }
