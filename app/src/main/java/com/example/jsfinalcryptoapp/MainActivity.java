@@ -23,7 +23,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.core.Context;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar loadingPB;
     private ArrayList<CurrencyRVModal> currencyRVModalArrayList;
     private CurrencyRVAdapter currencyRVAdapter;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +79,6 @@ public class MainActivity extends AppCompatActivity {
         // declare bottom nav view
         BottomNavigationView bottomNavigationView =  (BottomNavigationView) findViewById(R.id.Bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.Home);
-        recyclerView = findViewById(R.id.Recycler_view);
-        coins_check = new ArrayList<String>();
-        coins_check.clear();
-        crypto = new ArrayList<>();
-        crypto.clear();
 
 
         //add listener to the Bottom navigation
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.News:
                         //redirect to news
-                        startActivity(new Intent(getApplicationContext(), News.class));
+                        startActivity(new Intent(getApplicationContext(), CryptNews.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.Profile:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

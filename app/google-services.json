@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993061096033",
+    "project_id": "cop4655final-5d820",
+    "storage_bucket": "cop4655final-5d820.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993061096033:android:e116a56eb32cfb84f8f820",
+        "android_client_info": {
+          "package_name": "com.example.jsfinalcryptoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993061096033-5qsqcdd6qtlou2dgrd9ohvf7dn8b6vio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIxgpKLrlnqiFALW0BPxhMgqw3_jMJtMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993061096033-5qsqcdd6qtlou2dgrd9ohvf7dn8b6vio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
