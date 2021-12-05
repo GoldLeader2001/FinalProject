@@ -94,16 +94,6 @@
         android:text="Forgot Password"
         android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/others"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/SocialIcons"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
-        android:text="Login With..."
-        android:textColor="@color/white" />
-
     <LinearLayout
         android:id="@+id/SocialIcons"
         android:layout_width="match_parent"

@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.News:
                         //redirect to news
-                        startActivity(new Intent(getApplicationContext(), CryptNews.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.Profile:
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        startActivity(new Intent(getApplicationContext(), UserProf.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
