@@ -1,12 +1,15 @@
 package com.example.jsfinalcryptoapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -19,6 +22,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,6 +69,46 @@ public class MainActivity extends AppCompatActivity {
                 filterCurrencies(editable.toString());
             }
         }));
+
+        mAuth = FirebaseAuth.getInstance();
+
+        // declare bottom nav view
+        BottomNavigationView bottomNavigationView =  (BottomNavigationView) findViewById(R.id.Bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.Home);
+        recyclerView = findViewById(R.id.Recycler_view);
+        coins_check = new ArrayList<String>();
+        coins_check.clear();
+        crypto = new ArrayList<>();
+        crypto.clear();
+
+
+        //add listener to the Bottom navigation
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.Home:
+                        return true;
+
+                    case R.id.News:
+                        //redirect to news
+                        startActivity(new Intent(getApplicationContext(), News.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.Favorites:
+                        startActivity(new Intent(getApplicationContext(), Favorites.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.Profile:
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return true;
+            }
+        });
     }
 
     private void filterCurrencies(String currency){
