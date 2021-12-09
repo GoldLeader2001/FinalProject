@@ -18,6 +18,9 @@
             android:name=".Register_User"
             android:exported="false" />
         <activity
+            android:name=".NewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserProf"
             android:exported="false"/>
         <activity

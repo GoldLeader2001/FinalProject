@@ -23,9 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.core.Context;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -88,14 +86,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.Home:
                         return true;
 
-                    case R.id.News:
+                    case R.id.Login:
                         //redirect to news
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.Favorites:
-                        startActivity(new Intent(getApplicationContext(), Favorites.class));
+                    case R.id.News:
+                        startActivity(new Intent(getApplicationContext(), NewsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

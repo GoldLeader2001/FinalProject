@@ -8,14 +8,14 @@
         />
 
     <item
-        android:id="@+id/Favorites"
-        android:title="Search"
+        android:id="@+id/News"
+        android:title="News"
         android:icon="@drawable/ic_search"
         />
 
     <item
-        android:id="@+id/News"
-        android:title="News"
+        android:id="@+id/Login"
+        android:title="Login"
         android:icon="@drawable/ic_baseline_login_24"
         />
 

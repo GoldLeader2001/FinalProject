@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,13 +60,13 @@ public class UserProf extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.News:
+                    case R.id.Login:
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.Favorites:
-                        startActivity(new Intent(getApplicationContext(), Favorites.class));
+                    case R.id.News:
+                        startActivity(new Intent(getApplicationContext(), NewsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
