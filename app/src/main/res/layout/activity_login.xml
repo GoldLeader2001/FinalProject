@@ -113,14 +113,6 @@
             android:src="@drawable/google" />
 
 
-        <ImageView
-            android:id="@+id/githubBTN"
-            android:layout_width="68dp"
-            android:layout_height="68dp"
-            android:layout_margin="20dp"
-            android:onClick="onClick"
-            android:src="@drawable/github_logo" />
-
     </LinearLayout>
 
     <TextView

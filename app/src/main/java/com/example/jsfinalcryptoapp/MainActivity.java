@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         }));
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        updateUI(user);
+
+
 
         BottomNavigationView bottomNavigationView =  (BottomNavigationView) findViewById(R.id.Bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.Home);
@@ -163,5 +169,15 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         requestQueue.add(jsonObjectRequest);
+    }
+
+    private void updateUI(FirebaseUser user) {
+        //redirect to the corresponding activity
+        if (user != null){
+            Log.e("TAG", "user is in");
+        }else{
+            Log.e("TAG", "User not logged in");
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        }
     }
 }

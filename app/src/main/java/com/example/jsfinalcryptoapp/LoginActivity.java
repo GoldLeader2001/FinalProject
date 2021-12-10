@@ -49,37 +49,31 @@ public class LoginActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //declaration of variables
+
         email = (EditText) findViewById(R.id.email);
         password = (EditText)  findViewById(R.id.password);
         create_user = (TextView) findViewById(R.id.create_user);
         forgot_User = (TextView) findViewById(R.id.forgotPASS);
         ImageView google_login = (ImageView) findViewById(R.id.googleBTN);
-        ImageView facebook_login = (ImageView) findViewById(R.id.githubBTN);
         MaterialButton loginButton = (MaterialButton) findViewById(R.id.LoginBTN);
 
-        // [START config_signin]
-        // Configure Google Sign In
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        // [END config_signin]
 
-        // [START initialize_auth]
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
 
 
-    } // end of on create
+
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //initialize firebase user
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
     }
@@ -92,7 +86,6 @@ public class LoginActivity extends AppCompatActivity  {
             email.requestFocus();
             return;
         }else if(!Patterns.EMAIL_ADDRESS.matcher(S_email).matches()){
-            //check if real email format
             Toast.makeText(getApplicationContext(),"Invalid email. Please enter a valid one!",Toast.LENGTH_LONG).show();
             email.requestFocus();
             return;
@@ -101,42 +94,38 @@ public class LoginActivity extends AppCompatActivity  {
             password.requestFocus();
             return;
         }else{
-            //if fields correctly formated OR not empty login
             mAuth.signInWithEmailAndPassword(S_email,S_passwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(getApplicationContext(),"User Successfully logged in!", Toast.LENGTH_LONG).show();
-                        //send user to the corresponding page
+
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     } else{
-                        //loggin Error.
+
                         Toast.makeText(getApplicationContext(),"Error loggin in. Please try again", Toast.LENGTH_LONG).show();
 
                     }
                 }
             });
         }
-    } //end of login_User
-
+    }
 
     public void Google_login(){
         Log.e("TAG","in google login ");
-        //initialize sign in intent
+
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, 1000);
-    } //end of google login
+    }
 
-    // [START onactivityresult]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == 1000) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In was successful, authenticate with Firebase
+
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.e("TAG", "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
@@ -169,12 +158,6 @@ public class LoginActivity extends AppCompatActivity  {
                     }
                 });
     }
-    // [END auth_with_google]
-
-    public void github_login(){
-        Intent intent = new Intent(getApplicationContext(), GithubLogin.class);
-        startActivity(intent);
-    }//end of github login
 
     private void updateUI(FirebaseUser user) {
         if (user != null){
@@ -202,9 +185,6 @@ public class LoginActivity extends AppCompatActivity  {
                 Google_login();
                 break;
 
-            case R.id.githubBTN:
-                github_login();
-                break;
         }
     } //end of on click
 
