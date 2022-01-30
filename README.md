@@ -1,5 +1,4 @@
 # FinalProject
-COP4655 Final Project JohnSalsinger
 
 Cryptocurrency tracker app using CoinMarketCap API for specific information
 Cryptocurrency news provided by Gnews (google News API filtered for crypto specific articles)
